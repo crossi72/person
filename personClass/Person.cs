@@ -109,10 +109,21 @@ namespace personClass
 					gender = "F";
 				}
 
-				FiscalCode = new CodiceFiscaleUtility.CodiceFiscale(this.LastName, this.FirstName, gender, this.BirthDate, this.BirthCity, this.BirthProvince);
+				try
+				{
+					FiscalCode = new CodiceFiscaleUtility.CodiceFiscale(this.LastName, this.FirstName, gender, this.BirthDate, this.BirthCity, this.BirthProvince);
 
-				//use CodiceFiscale class to generate the fiscal code
-				result = FiscalCode.Codice;
+					//use CodiceFiscale class to generate the fiscal code
+					result = FiscalCode.Codice;
+				} catch (Exception e) {
+#if DEBUG
+					result = e.StackTrace;
+#else
+					result= "";
+#endif
+				} finally {
+
+				}
 			}
 
 			return result;
