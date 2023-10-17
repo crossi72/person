@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace CodiceFiscaleUtility
 {
-	class CodiceFiscale
+	public class CodiceFiscale
 	{
 		private static DataSet data;
 		private static string omocodiciRegex;
