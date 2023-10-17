@@ -118,6 +118,30 @@ namespace personClass
 			return result;
 		}
 
+		/// <summary>
+		/// Calculates the age of the person
+		/// </summary>
+		/// <returns>The age of the person</returns>
+		public int Age(){
+			DateTime currentDate;
+			int result;
+		
+			//get current date
+			currentDate = DateTime.Now;
+
+			//calculate years between the two date
+			result = currentDate.Year - this.BirthDate.Year;
+
+			//fix age if birthday is future
+			if ((this.BirthDate.Month > currentDate.Month)
+			|| (this.BirthDate.Month == currentDate.Month && 
+				this.BirthDate.Day > currentDate.Day)){
+				result -= 1;
+			}
+
+			return result;
+		}
+
 		#endregion
 	}
 }

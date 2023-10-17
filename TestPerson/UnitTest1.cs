@@ -30,11 +30,39 @@ namespace TestPerson
 			//declare variable
 			personClass.Person myPerson;
 
-			//create object
+			//test normal case
 			myPerson = new personClass.Person("Cladio", "Rossi", personClass.Person.GenderType.Male, "Rimini", "RN", new DateTime(1972, 8, 21));
 
 			if (myPerson.FiscalCode() != "RSSCLD72M21H294M"){
 				throw new Exception("Wrong fiscal code!");
+			}
+
+			//test gender not specified
+			myPerson = new personClass.Person("Cladio", "Rossi", personClass.Person.GenderType.NotSpecified, "Rimini", "RN", new DateTime(1972, 8, 21));
+
+			if (myPerson.FiscalCode() != ""){
+				throw new Exception("Wrong fiscal code!");
+			}
+		}
+
+		[TestMethod]
+		public void TestAge(){
+			//declare variable
+			personClass.Person myPerson;
+
+			//test normal case
+			myPerson = new personClass.Person("Cladio", "Rossi", personClass.Person.GenderType.Male, "Rimini", "RN", new DateTime(1972, 8, 21));
+
+			if (myPerson.Age() != 51){
+				throw new Exception("Wrong Age!");
+			}
+
+			//test birthday not reached
+			myPerson = new personClass.Person("Cladio", "Rossi", personClass.Person.GenderType.NotSpecified, "Rimini", "RN", new DateTime(1972, 12, 21));
+
+			if (myPerson.Age() != 50)
+			{
+				throw new Exception("Wrong Age!");
 			}
 
 		}
